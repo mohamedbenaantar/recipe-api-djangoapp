@@ -1,0 +1,32 @@
+---
+name: Checks
+
+on: [push]
+
+## 1. Login to docker Hub
+
+## 2. checkout action
+
+## 3. run the Test
+
+## 4. Linting Process
+
+jobs:
+  test-lint:
+    name: Test and Lint
+    ## Ubuntu 20.04 docker compose is already installed on it
+    runs-on: ubuntu-20.04  ### you need a runner to run your job
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Checkout   ## make sure the code is available to run the test on it
+        uses: actions/checkout@v2 
+
+      - name: Test
+        run: docker-compose run --rm app sh -c "python manage.py test"
+
+      - name: Linting
+        run: docker-compose run --rm app sh -c "flake8"

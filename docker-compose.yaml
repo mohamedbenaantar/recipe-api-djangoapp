@@ -5,7 +5,10 @@ services:
     build:
       context: .
       args: 
-      - DEV=true 
+      - DEV=true
+    ## reflect the changes made inside the container to the host
+    volumes:
+    - ./app:/app 
     ports:
     - "8000:8000"
     command: >
