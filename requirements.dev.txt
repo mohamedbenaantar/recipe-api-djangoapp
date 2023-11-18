@@ -1,0 +1,3 @@
+## development dependencies for unecessary packages don' need them when deploy image in production
+flake8>=3.9.2,<3.10
+
