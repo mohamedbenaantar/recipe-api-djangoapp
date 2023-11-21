@@ -50,7 +50,7 @@ class ModelTests(TestCase):
         )
 
         self.assertTrue(user.is_superuser)
-        self.assertTrue(user.is_staff)
+        self.assertTrue(user.is_staff) ## user will be able to access the admin panel 
         
     def test_create_recipe(self):
         """Test creating a recipe is successful."""
